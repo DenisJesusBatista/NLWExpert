@@ -11,16 +11,14 @@ public class CreateOfferUseCase
     private readonly LoggedUser _loggedUser;
     private readonly IOfferRepository _repository;
 
-    public CreateOfferUseCase(LoggedUser loggedUser, IOfferRepository _repository)
+    public CreateOfferUseCase(LoggedUser loggedUser, IOfferRepository repository)
     {
         _loggedUser = loggedUser;
-        _repository = _repository;
+        _repository = repository;
     }
     
     public int Execute(int itemId, RequestCreateOfferJson request)
     {
-        var repository = new RocketseatAuctionDbContext();
-
         var user = _loggedUser.User();
 
         var offer = new Offer

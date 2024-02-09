@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Filters;
+using RocketseatAuction.API.Repositories;
 using RocketseatAuction.API.Repositories.DataAccess;
 using RocketseatAuction.API.Services;
 using RocketseatAuction.API.UseCases.Auctions.GetCurrent;
@@ -51,6 +53,12 @@ builder.Services.AddScoped<CreateOfferUseCase>();
 builder.Services.AddScoped<GetCurrentAuctionUseCase>();
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>(); 
 builder.Services.AddScoped<IOfferRepository, OfferRepository>(); /* - Injeção de dependência para IOfferRepository para implementacao do OfferRepository*/
+builder.Services.AddScoped<IUseRepository, UseRepository>();
+
+builder.Services.AddDbContext<RocketseatAuctionDbContext>(options =>
+{
+    options.UseSqlite(@"Data Source=C:\workspace\Rocketseat\leilaoDbNLW.db");
+});
 
 builder.Services.AddHttpContextAccessor();
 

@@ -1,23 +1,27 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Repositories;
 
 namespace RocketseatAuction.API.Filters;
 
 public class AuthenticationUserAttribute : AuthorizeAttribute, IAuthorizationFilter
 {
+
+    private IUseRepository _repository; /*Variavel*/
+   
+    public AuthenticationUserAttribute(IUseRepository repository) => _repository = repository;  /*Construtor*/
+
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         try
         {
             var token = TokenOnRequest(context.HttpContext);
 
-            var repository = new RocketseatAuctionDbContext();
-
             var email = FromBase64String(token);
 
-            var exist = repository.Users.Any(user => user.Email.Equals(email));
+            var exist = _repository.ExistUserWithEmail(email);
 
             if (exist == false)
             {
@@ -36,7 +40,7 @@ public class AuthenticationUserAttribute : AuthorizeAttribute, IAuthorizationFil
     {
         var authentication = context.Request.Headers.Authorization.ToString();
 
-        if(string.IsNullOrEmpty(authentication)) 
+        if (string.IsNullOrEmpty(authentication))
         {
             throw new Exception("Token is missing valid");
         }

@@ -6,7 +6,7 @@ namespace RocketseatAuction.API.Repositories.DataAccess;
 
 public class AuctionRepository: IAuctionRepository
 {
-    private readonly RocketseatAuctionDbContext _dbContext;
+    private readonly RocketseatAuctionDbContext _dbContext; /*Recebe como injecao de depedência o context*/
     
     public AuctionRepository(RocketseatAuctionDbContext dbContext) => _dbContext = dbContext;
     
