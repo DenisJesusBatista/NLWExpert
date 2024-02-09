@@ -7,6 +7,7 @@ public class OfferRepository: IOfferRepository
 {
     private readonly RocketseatAuctionDbContext _dbContext;
 
+    //Fazendo uso de injeção de dependência
     public OfferRepository(RocketseatAuctionDbContext dbContext) => _dbContext = dbContext;
 
     public void Add(Offer offer)
