@@ -22,7 +22,7 @@ public class GetCurrentAuctionUseCaseTest
         //Arrange: Iniciazar tudo que precisa
 
 
-        /*Pacote vai gerar infprmações aleatórias ( pluggin: BOGUS )  */
+        /*Pacote vai gerar infprmações aleatórias ( pluggin: BOGUS ) */
 
         var entity = new Faker<Auction>()
             .RuleFor(auction => auction.Id, f => f.Random.Number(1, 100))
