@@ -44,7 +44,7 @@ public class GetCurrentAuctionUseCaseTest
             }).Generate() /*Generate para consultar a entidade (entity)*/;
 
 
-        /*MOQ == MOCK: Nosso repositorio fake*/
+        /*MOQ == MOCK: Nosso repositorio fake.*/
         var mock = new Mock<IAuctionRepository>();
         mock.Setup(i => i.GetCurrent()).Returns(entity);
 
