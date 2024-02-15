@@ -5,11 +5,6 @@ using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Entities;
 using RocketseatAuction.API.Enums;
 using RocketseatAuction.API.UseCases.Auctions.GetCurrent;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UseCases.Test.Auctions.GetCurrent;
 public class GetCurrentAuctionUseCaseTest
