@@ -4,7 +4,7 @@ Atalhos
 # NLW Expert
 # NLW Expert - Evento NLW - Rocketseat
 
-Foi desenvolvida uma API REST cadastro de ofertas. 
+Foi desenvolvida uma API de gerenciamento de leilões. 
 
 ## Tecnologias e práticas utilizadas
 - ASP.NET Core com .NET 5
