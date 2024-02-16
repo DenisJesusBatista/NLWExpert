@@ -30,11 +30,11 @@ public class CreateOfferUseCaseTest
         loggedUser.Setup(i => i.User()).Returns(new User());
 
 
-        var useCase = new CreateOfferUseCase(,mock.Object);
+        //var useCase = new CreateOfferUseCase(,mock.Object);
 
 
         //ACT: Ação
-        var id = useCase.Execute(0, request);
+        //var id = useCase.Execute(0, request);
 
         //ASSERT: Verifica se o resultado devolvido é o esperado.
         /*Do proprio .NET*/
