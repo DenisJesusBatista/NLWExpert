@@ -40,13 +40,6 @@ public class CreateOfferUseCaseTest
         /*Do proprio .NET*/
         //Assert.NotNull(auction);
 
-        /*Mais usado no mercado, usando o pluginn FluentAssertions*/
-        //auction.Should().NotBeNull();
-
-        /*Condição: Esse ID deveria ser o mesmo valor de entidade.ID*/
-        //auction.Id.Should().Be(entity.Id);
-        //auction.Name.Should().Be(entity.Name);
-
 
     }
 }
