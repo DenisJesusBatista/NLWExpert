@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using FluentAssertions;
 using Moq;
 using RocketseatAuction.API.Comumunication.Request;
 using RocketseatAuction.API.Contracts;
@@ -9,8 +10,11 @@ using RocketseatAuction.API.UseCases.Offers.CreateOffer;
 namespace UseCases.Test.Offers.CreateOffer;
 public class CreateOfferUseCaseTest
 {
-    [Fact]
-    public void Success()
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(3)]
+    public void Success(int itemId)
     {
         //Criterio dos AAA 
 
@@ -24,20 +28,24 @@ public class CreateOfferUseCaseTest
 
 
         /*MOQ == MOCK: Nosso repositorio fake.*/
-        var mock = new Mock<IOfferRepository>();
+        var offerRepository = new Mock<IOfferRepository>();
         var loggedUser = new Mock<ILoggedUser>();
 
         loggedUser.Setup(i => i.User()).Returns(new User());
 
 
-        //var useCase = new CreateOfferUseCase(,mock.Object);
+        var useCase = new CreateOfferUseCase(loggedUser.Object, offerRepository.Object);
 
 
         //ACT: Ação
-        //var id = useCase.Execute(0, request);
+        /*Executando teste várias vezes trocando o paramentro ItemId usando Theory*/
+        var act = () => useCase.Execute(itemId, request);
 
         //ASSERT: Verifica se o resultado devolvido é o esperado.
         /*Do proprio .NET*/
+
+        act.Should().NotThrow();
+
         //Assert.NotNull(auction);
 
 
