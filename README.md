@@ -1,4 +1,5 @@
-CTRL + R + G: Apagar using c  
+Atalhos
+# CTRL + R + G: Apagar using c  
 
 # NLW Expert
 # NLW Expert - Evento NLW - Rocketseat
