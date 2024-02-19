@@ -10,5 +10,7 @@ public class RocketseatAuctionDbContext: DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Offer> Offers { get; set; } /*Teste*/
 
-   
+    public DbSet<Item>? items { get; set; }
+
+
 }

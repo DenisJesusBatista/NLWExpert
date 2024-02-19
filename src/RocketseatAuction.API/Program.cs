@@ -6,6 +6,7 @@ using RocketseatAuction.API.Repositories;
 using RocketseatAuction.API.Repositories.DataAccess;
 using RocketseatAuction.API.Services;
 using RocketseatAuction.API.UseCases.Auctions.GetCurrent;
+using RocketseatAuction.API.UseCases.Items.GetCurrent;
 using RocketseatAuction.API.UseCases.Offers.CreateOffer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,7 +52,11 @@ builder.Services.AddScoped<AuthenticationUserAttribute>();
 builder.Services.AddScoped<ILoggedUser, LoggedUser>();
 builder.Services.AddScoped<CreateOfferUseCase>();
 builder.Services.AddScoped<GetCurrentAuctionUseCase>();
-builder.Services.AddScoped<IAuctionRepository, AuctionRepository>(); 
+builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
+
+builder.Services.AddScoped<GetCurrentItemUseCase>();
+builder.Services.AddScoped<IItemsRepository, ItemRepository>();
+
 builder.Services.AddScoped<IOfferRepository, OfferRepository>(); /* - Injeção de dependência para IOfferRepository para implementacao do OfferRepository*/
 builder.Services.AddScoped<IUseRepository, UseRepository>();
 
