@@ -63,6 +63,7 @@ builder.Services.AddScoped<IUseRepository, UseRepository>();
 builder.Services.AddDbContext<RocketseatAuctionDbContext>(options =>
 {
     options.UseSqlite(@"Data Source=C:\workspace\Rocketseat\leilaoDbNLW.db");
+    //options.UseSqlServer();
 });
 
 builder.Services.AddHttpContextAccessor();

@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Entities;
 
@@ -10,9 +11,13 @@ public class ItemRepository: IItemsRepository
     public ItemRepository(RocketseatAuctionDbContext dbContext) => _dbContext = dbContext;
 
 
-    public Item? GetCurrent()
+    public List<Item?> GetCurrent()
     {
-        return _dbContext.items.First(item => item.Id.Equals(1));
+        var allItems = _dbContext.items.Where(item => item.AuctionId == 1);
+
+        //var allItemsViewModels = allItems
+        //    .Select(i => new Item());
+        return _dbContext.items.ToList();
 
 
     }

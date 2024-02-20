@@ -4,7 +4,7 @@ namespace RocketseatAuction.API.Contracts;
 
 public interface IItemsRepository
 {
-    Item? GetCurrent();
+    List<Item?> GetCurrent();
 
     //Item? GetAllItems();
 }

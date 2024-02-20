@@ -7,9 +7,9 @@ public class GetCurrentItemUseCase
 {
     private readonly IItemsRepository _repository;  
 
-    public GetCurrentItemUseCase(IItemsRepository repository) => _repository = repository;  
+    public GetCurrentItemUseCase(IItemsRepository repository) => _repository = repository;
 
-    public Item? Execute()
+    public List<Item?> Execute()
     {
         return _repository.GetCurrent();
     }
