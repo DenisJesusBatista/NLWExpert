@@ -7,4 +7,5 @@ public interface IItemsRepository
     List<Item?> GetCurrent();
 
     //Item? GetAllItems();
+    void Add(Item item);
 }

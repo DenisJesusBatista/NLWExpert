@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Entities;
+using System;
 
 namespace RocketseatAuction.API.Repositories.DataAccess;
 
@@ -20,6 +21,14 @@ public class ItemRepository: IItemsRepository
         return _dbContext.items.ToList();
 
 
+    }
+
+    public void Add(Item item)
+    {
+
+        _dbContext.items.Add(item);
+
+        _dbContext.SaveChanges();
     }
 
     //public List<Item?> GetAllItems()

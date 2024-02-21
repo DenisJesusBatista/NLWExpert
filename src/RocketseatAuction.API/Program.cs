@@ -6,6 +6,7 @@ using RocketseatAuction.API.Repositories;
 using RocketseatAuction.API.Repositories.DataAccess;
 using RocketseatAuction.API.Services;
 using RocketseatAuction.API.UseCases.Auctions.GetCurrent;
+using RocketseatAuction.API.UseCases.Items.CreateItems;
 using RocketseatAuction.API.UseCases.Items.GetCurrent;
 using RocketseatAuction.API.UseCases.Offers.CreateOffer;
 
@@ -51,6 +52,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddScoped<AuthenticationUserAttribute>();
 builder.Services.AddScoped<ILoggedUser, LoggedUser>();
 builder.Services.AddScoped<CreateOfferUseCase>();
+builder.Services.AddScoped<CreateItemsUseCase>();
 builder.Services.AddScoped<GetCurrentAuctionUseCase>();
 builder.Services.AddScoped<IAuctionRepository, AuctionRepository>();
 
