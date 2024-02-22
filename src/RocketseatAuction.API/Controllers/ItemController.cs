@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RocketseatAuction.API.Comumunication.Request;
 using RocketseatAuction.API.Entities;
+using RocketseatAuction.API.UseCases.Items.CreateItems;
 using RocketseatAuction.API.UseCases.Items.GetCurrent;
+using RocketseatAuction.API.UseCases.Offers.CreateOffer;
 
 namespace RocketseatAuction.API.Controllers;
 
@@ -24,9 +26,13 @@ public class ItemController : RocketseatAuctionBaseController
     }
 
     [HttpPost]
-    public IActionResult CreateItems([FromBody] RequestCreateItemsJson request)
+    public IActionResult CreateItems(
+        [FromBody] RequestCreateItemsJson request,
+        [FromServices] CreateItemsUseCase useCase)
     {
-        return Created(string.Empty,string.Empty);
+        var item = useCase.Execute(request);
+
+        return Created(string.Empty, item);
 
     }
 }

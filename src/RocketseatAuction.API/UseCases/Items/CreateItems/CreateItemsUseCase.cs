@@ -8,25 +8,22 @@ namespace RocketseatAuction.API.UseCases.Items.CreateItems;
 public class CreateItemsUseCase
 {
     private readonly IItemsRepository _repository;
+    private static int _lastItemId = 7;
 
-    public CreateItemsUseCase(IItemsRepository repository)
+    public int Execute(RequestCreateItemsJson request)
     {
-        _repository = repository;
-    }
-
-    public int Execute( RequestCreateItemsJson request)
-    {
-
         var item = new Item
         {
+            Id = ++_lastItemId,
             Name = request.Name,
             Brand = request.Brand,
-            //Condition = request.Condition,
             BasePrice = request.BasePrice,
+            AuctionId = request.AuctionId,
         };
 
         _repository.Add(item);
 
         return item.Id;
     }
+
 }
