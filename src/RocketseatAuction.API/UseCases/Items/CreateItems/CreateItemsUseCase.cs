@@ -14,7 +14,7 @@ public class CreateItemsUseCase
     {
         var item = new Item
         {
-            Id = ++_lastItemId,
+            //Id = ++_lastItemId,
             Name = request.Name,
             Brand = request.Brand,
             BasePrice = request.BasePrice,

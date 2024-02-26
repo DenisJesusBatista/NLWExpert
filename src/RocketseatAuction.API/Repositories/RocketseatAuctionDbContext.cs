@@ -12,5 +12,12 @@ public class RocketseatAuctionDbContext: DbContext
 
     public DbSet<Item>? items { get; set; }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Item>()
+            .Property(i => i.Id)
+            .ValueGeneratedOnAdd();
+    }
+
 
 }
