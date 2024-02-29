@@ -26,7 +26,7 @@ public class CreateItemsUseCaseTest
             .RuleFor(request => request.Brand, f => f.Commerce.Department())
             .RuleFor(request => request.Condition, f => f.Random.Number(1, 100))
             .RuleFor(request => request.BasePrice, f => f.Random.Decimal(1, 100))
-            .RuleFor(request => request.AuctionId, f => f.Random.Decimal(1, 1))
+            .RuleFor(request => request.AuctionId, f => f.Random.Number(1, 1))
             .Generate() /*Generate para consultar a entidade (entity)*/;
 
 
