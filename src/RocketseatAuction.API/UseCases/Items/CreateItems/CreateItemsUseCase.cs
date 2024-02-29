@@ -7,11 +7,19 @@ namespace RocketseatAuction.API.UseCases.Items.CreateItems;
 
 public class CreateItemsUseCase
 {
+    private readonly ILoggedUser _loggedUser;
     private readonly IItemsRepository _repository;
-    private static int _lastItemId = 7;
+
+    public CreateItemsUseCase(ILoggedUser loggedUser, IItemsRepository repository)
+    {
+        _loggedUser = loggedUser;
+        _repository = repository;
+    }
 
     public int Execute(RequestCreateItemsJson request)
     {
+        var auctionId = _loggedUser.User();
+
         var item = new Item
         {
             //Id = ++_lastItemId,
