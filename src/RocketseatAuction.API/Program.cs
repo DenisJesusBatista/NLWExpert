@@ -1,3 +1,4 @@
+using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
@@ -9,6 +10,7 @@ using RocketseatAuction.API.UseCases.Auctions.GetCurrent;
 using RocketseatAuction.API.UseCases.Items.CreateItems;
 using RocketseatAuction.API.UseCases.Items.GetCurrent;
 using RocketseatAuction.API.UseCases.Offers.CreateOffer;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -63,10 +65,16 @@ builder.Services.AddScoped<IOfferRepository, OfferRepository>(); /* - Injeção de
 builder.Services.AddScoped<IUseRepository, UseRepository>();
 
 builder.Services.AddDbContext<RocketseatAuctionDbContext>(options =>
-{
-    options.UseSqlite(@"Data Source=C:\workspace\Rocketseat\leilaoDbNLW.db");
-    //options.UseSqlServer("Server=lcoalhost\\F004092\\SQLEXPRESS;Database=nome_banco_dados;User Id=usuario;Password=senha;");
-});
+options.UseNpgsql(builder.Configuration.GetConnectionString("RocketseatConnection")));
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+builder.Services.AddFluentMigratorCore().ConfigureRunner(c =>
+        c.AddPostgres());
+
+// Add services to the container.
+
+builder.Services.AddControllers().AddNewtonsoftJson();
 
 builder.Services.AddHttpContextAccessor();
 

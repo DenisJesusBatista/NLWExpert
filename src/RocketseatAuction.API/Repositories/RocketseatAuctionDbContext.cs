@@ -14,18 +14,22 @@ public class RocketseatAuctionDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Item>(e =>
-        {
-            e.HasKey(i => i.Id);
+        /*Responsavel em fazer a configuraçoes necessaria para fazer a 
+      * conexão da variavel com as tabelas*/
+        builder.ApplyConfigurationsFromAssembly(typeof(RocketseatAuctionDbContext).Assembly);
 
-            e.Property(i => i.BasePrice)
-            .HasColumnType("decimal(18,4)");
+        //builder.Entity<Item>(e =>
+        ////{
+        ////    e.HasKey(i => i.Id);
 
-            //e.HasMany(i => i.Id)
-            //.WithOne()
-            //.HasForeignKey(i => i.AuctionId)
-            //.OnDelete(DeleteBehavior.Restrict);
-        });
+        ////    e.Property(i => i.BasePrice)
+        ////    .HasColumnType("decimal(18,4)");
+
+        //    //e.HasMany(i => i.Id)
+        //    //.WithOne()
+        //    //.HasForeignKey(i => i.AuctionId)
+        //    //.OnDelete(DeleteBehavior.Restrict);
+        //});
 
 
 

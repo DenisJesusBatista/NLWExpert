@@ -1,6 +1,8 @@
-﻿namespace RocketseatAuction.API.Entities;
+﻿using RocketseatAuction.API.Migrations;
 
-public class Offer
+namespace RocketseatAuction.API.Entities;
+
+public class Offer: EntidadeBase
 {
     public int Id { get; set; }
     public DateTime CreatedOn { get; set; }  

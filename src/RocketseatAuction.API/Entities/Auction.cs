@@ -1,6 +1,6 @@
 ﻿namespace RocketseatAuction.API.Entities;
 
-public class Auction
+public class Auction: EntidadeBase
 {
     public int Id { get; set; } /* Propriedade 
                                  * Operacoes 

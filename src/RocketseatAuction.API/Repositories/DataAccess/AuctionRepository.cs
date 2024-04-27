@@ -15,12 +15,15 @@ public class AuctionRepository: IAuctionRepository
 
 
         /*Forcar NoContent*/
-        var today = DateTime.Now;
+        //var today = DateTime.Now;
+        // Definindo a data manualmente e convertendo para UTC
+        DateTime manualDate = new DateTime(2024, 4, 27, 0, 0, 0, DateTimeKind.Utc);
+
 
         return _dbContext
             .Auctions
             .Include(aucion => aucion.Items)
-            .FirstOrDefault(auction => today >= auction.Starts && today <= auction.Ends); /*Retornar apenas os leiloes conforma a data today*/
+            .FirstOrDefault(auction => manualDate >= auction.Starts && manualDate <= auction.Ends); /*Retornar apenas os leiloes conforma a data today*/
         //.First(); /*Retornar todos os leiloes*/
 
     }

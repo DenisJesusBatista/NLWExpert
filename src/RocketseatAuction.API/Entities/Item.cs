@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace RocketseatAuction.API.Entities;
 
 [Table("Items")]
-public class Item
+public class Item: EntidadeBase
 {
     public int Id { get; set; }
     public string Name { get; set; } = string.Empty;
