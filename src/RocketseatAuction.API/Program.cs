@@ -67,7 +67,12 @@ builder.Services.AddScoped<IUseRepository, UseRepository>();
 builder.Services.AddDbContext<RocketseatAuctionDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("RocketseatConnection")));
 
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//Configurando AutoMapper na injeção de dependência
+builder.Services.AddScoped(provider => new AutoMapper.MapperConfiguration(cfg =>
+{
+    cfg.AddProfile(new AutoMapperConfiguracao());
+}).CreateMapper());
 
 builder.Services.AddFluentMigratorCore().ConfigureRunner(c =>
         c.AddPostgres());
