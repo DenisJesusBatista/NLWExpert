@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Entities;
+using RocketseatAuction.API.Input;
 
 namespace RocketseatAuction.API.UseCases.Auctions.GetCurrent;
 
@@ -12,15 +14,33 @@ public class GetCurrentAuctionUseCase
 
 
 
-    //public Auction Execute()
+    public AuctionDto Execute()
+    {
+        var auction = _repository.GetCurrent();
+    //            .FirstOrDefault()
+
+        return new AuctionDto()
+        {
+            Id = auction.Id,
+            Name = auction.Name,
+            Starts = auction.Starts,
+            Ends = auction.Ends
+        };
+        //return _repository.RecuperarTodosAuction();
+    }
+
+    //public IEnumerable<Auction> Execute()
     //{
     //    return _repository.RecuperarTodosAuction();
     //}
 
-    public IEnumerable<Auction> Execute()
-    {
-        return _repository.RecuperarTodosAuction();
-    }
+    //public AuctionDto Execute()
+    //{
+    //    var auction = _repository.ObterAuctionDto
+    //            .FirstOrDefault()
+    //            ?? throw new Exception("Esse cliente não existe");
+    //   
+    //}
 
     //public async Task<Auction> Executar()
     //{

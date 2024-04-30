@@ -1,5 +1,6 @@
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using RocketseatAuction.API.Contracts;
 using RocketseatAuction.API.Filters;
@@ -65,7 +66,12 @@ builder.Services.AddScoped<IOfferRepository, OfferRepository>(); /* - Injeção de
 builder.Services.AddScoped<IUseRepository, UseRepository>();
 
 builder.Services.AddDbContext<RocketseatAuctionDbContext>(options =>
-options.UseNpgsql(builder.Configuration.GetConnectionString("RocketseatConnection")));
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("RocketseatConnection"));
+    options.UseLazyLoadingProxies();
+
+});
+
 
 //builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 //Configurando AutoMapper na injeção de dependência

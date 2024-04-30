@@ -36,8 +36,8 @@ public class AuctionController : RocketseatAuctionBaseController
     {
         var result = useCase.Execute();
 
-        if (result == null || !result.Any())
-            return NoContent();
+        //if (result == null || !result.())
+        //    return NoContent();
 
         return Ok(result);
     }
